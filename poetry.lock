@@ -347,7 +347,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "d964897f4a8b523ff8c93ecb3e4fc7dd6505e44aa8f455aad71451b4ecfe6bf6"
+content-hash = "10ce5ea0200cf7a5c4ed91e05958a3b0e626d0017f9b43a4bc00b12f1a38f73a"
 
 [metadata.files]
 apipkg = [
