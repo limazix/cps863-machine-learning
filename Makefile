@@ -28,7 +28,11 @@ serve-docs:
 	@$(RUNNER) pydoc-markdown --server --open
 
 build-docs:
-	@$(RUNNER) pydoc-markdown --build --site-dir=site
+	@$(RUNNER) pydoc-markdown --build --site-dir=gh-pages
 
 deploy-docs:
-	@git push origin `git subtree split --prefix build/docs/site main`:gh-pages --force
+	@mv ./build/docs/gh-pages .
+	@git add .
+	@git commit -am"it generates github static page"
+	@git push origin `git subtree split --prefix gh-pages main`:gh-pages --force
+	@git reset --hard HEAD~
