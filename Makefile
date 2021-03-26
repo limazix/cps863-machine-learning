@@ -31,4 +31,4 @@ build-docs:
 	@$(RUNNER) pydoc-markdown --build --site-dir=site
 
 deploy-docs:
-	@git push origin `git subtree split --prefix build/docs/site master`:gh-pages --force
+	@git push origin `git subtree split --prefix build/docs/site main`:gh-pages --force
