@@ -1,6 +1,9 @@
 SHELL:=/bin/bash
-
 RUNNER=poetry run
+
+PYTHON_TOOLS=tools
+PYTHON_TESTS=tests
+PYTHON_SCRIPTS=$(PYTHON_TOOLS) $(PYTHON_TESTS)
 
 install:
 	@poetry install
@@ -11,11 +14,14 @@ update:
 clean:
 	@poetry cache clean
 
+lint:
+	@$(RUNNER) black $(PYTHON_SCRIPTS) --check
+
 test:
 	@$(RUNNER) pytest
 
 coverage:
-	@$(RUNNER) pytest --cov=tools
+	@$(RUNNER) pytest --cov=$(PYTHON_TOOLS)
 
 serve-docs:
 	@$(RUNNER) pydoc-markdown --server --open

@@ -10,8 +10,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  lint:
+  runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - uses: ./.github/actions/setup-poetry
+    - name: Run Lint
+      run: make lint
   unit-test:
-    name: Test on Python 
+    name: Test on Python
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,7 +38,5 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - uses: ./.github/actions/setup-poetry
-    - name: install project dependencies
-      run: make install
     - name: Run tests
       run: make test
