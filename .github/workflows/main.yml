@@ -51,5 +51,9 @@ jobs:
     - uses: ./.github/actions/setup-poetry
     - name: Build docs
       run: make build-docs
+    - name: Setup Github Credentials
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
     - name: Deploy docs
       run: make deploy-docs
