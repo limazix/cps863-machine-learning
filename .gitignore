@@ -130,3 +130,6 @@ dmypy.json
 
 # conda
 .empty
+
+# jupyter
+.virtual_documents
