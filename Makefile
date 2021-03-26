@@ -28,7 +28,7 @@ serve-docs:
 	@$(RUNNER) pydoc-markdown --server --open
 
 build-docs:
-	@$(RUNNER) pydoc-markdown --build --site-dir=docs
+	@$(RUNNER) pydoc-markdown --build --site-dir=site
 
-deploy-docs: build-docs
-	@$(RUNNER) mkdocs gh-deploy
+deploy-docs:
+	@git push origin `git subtree split --prefix build/docs/site master`:gh-pages --force
