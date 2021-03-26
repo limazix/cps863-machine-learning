@@ -17,5 +17,11 @@ test:
 coverage:
 	@$(RUNNER) pytest --cov=tools
 
-doc-server:
+serve-docs:
 	@$(RUNNER) pydoc-markdown --server --open
+
+build-docs:
+	@$(RUNNER) pydoc-markdown --build --site-dir=docs
+
+deploy-docs: build-docs
+	@$(RUNNER) mkdocs gh-deploy
