@@ -16,6 +16,7 @@ clean:
 
 lint:
 	@$(RUNNER) black $(PYTHON_SCRIPTS) --check
+	@$(RUNNER) flake8 $(PYTHON_SCRIPTS) --statistics
 
 test:
 	@$(RUNNER) pytest
