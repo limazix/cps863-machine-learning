@@ -43,5 +43,6 @@ deploy-docs:
 jupyter-lab:
 	@docker run -it -p 8888:8888 \
 		-v $(ROOT_DIR)/notebooks/:/home/jovyan/work \
+		-v $(ROOT_DIR)/data/:/home/jovyan/work/data \
 		-w /home/jovyan/work \
 		elyra/elyra jupyter lab
