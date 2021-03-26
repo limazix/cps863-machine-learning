@@ -36,3 +36,6 @@ deploy-docs:
 	@git commit -am"it generates github static page"
 	@git push origin `git subtree split --prefix gh-pages main`:gh-pages --force
 	@git reset --hard HEAD~
+
+jupyter-lab:
+	@docker run -it -p 8888:8888 elyra/elyra jupyter lab
