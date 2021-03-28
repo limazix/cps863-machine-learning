@@ -1,8 +1,10 @@
 SHELL:=/bin/bash
-RUNNER=poetry run
+PYTHON_RUNNER=poetry run
 
 MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 ROOT_DIR := $(dir $(MAKEFILE_PATH))
+
+CONTAINER_RUNNER=podman
 
 PYTHON_TOOLS=tools
 PYTHON_TESTS=tests
@@ -18,20 +20,20 @@ clean:
 	@poetry cache clean
 
 lint:
-	@$(RUNNER) black $(PYTHON_SCRIPTS) --check
-	@$(RUNNER) flake8 $(PYTHON_SCRIPTS) --statistics
+	@$(PYTHON_RUNNER) black $(PYTHON_SCRIPTS) --check
+	@$(PYTHON_RUNNER) flake8 $(PYTHON_SCRIPTS) --statistics
 
 test:
-	@$(RUNNER) pytest
+	@$(PYTHON_RUNNER) pytest
 
 coverage:
-	@$(RUNNER) pytest --cov=$(PYTHON_TOOLS)
+	@$(PYTHON_RUNNER) pytest --cov=$(PYTHON_TOOLS)
 
 serve-docs:
-	@$(RUNNER) pydoc-markdown --server --open
+	@$(PYTHON_RUNNER) pydoc-markdown --server --open
 
 build-docs:
-	@$(RUNNER) pydoc-markdown --build --site-dir=gh-pages
+	@$(PYTHON_RUNNER) pydoc-markdown --build --site-dir=gh-pages
 
 deploy-docs:
 	@mv ./build/docs/gh-pages .
@@ -41,7 +43,7 @@ deploy-docs:
 	@git reset --hard HEAD~
 
 jupyter-lab:
-	@docker run -it -p 8888:8888 \
+	@$(CONTAINER_RUNNER) run -it -p 8888:8888 \
 		-v $(ROOT_DIR)/notebooks/:/home/jovyan/work/notebooks \
 		-v $(ROOT_DIR)/data/:/home/jovyan/work/data \
 		-v $(ROOT_DIR)/tools/:/home/jovyan/work/tools \
