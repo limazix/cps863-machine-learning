@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "ai-project-template"
+version = "0.1.0"
+description = ""
+authors = ["Bruno Lima <blimacardoso@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7.1"
+numpy = "^1.20.2"
+pandas = "^1.2.3"
+plotly = "^4.14.3"
+dash = "^1.19.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.0"
+flake8 = "^3.9.0"
+mypy = "^0.812"
+pytest-cov = "^2.11.1"
+pytest-xdist = "^2.2.1"
+black = {version = "^20.8b1", allow-prereleases = true}
+mkdocs = "^1.1.2"
+pydoc-markdown = "^3.10.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]

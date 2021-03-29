@@ -1,0 +1,59 @@
+name: Pipeline
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  lint:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - uses: ./.github/actions/setup-poetry
+    - name: Run Lint
+      run: make lint
+  unit-test:
+    name: Unit Test
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - uses: ./.github/actions/setup-poetry
+    - name: Run tests
+      run: make test
+  gh-pages:
+    name: Deploy Github Pages
+    needs: unit-test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Python
+      uses: actions/setup-python@v1
+    - uses: ./.github/actions/setup-poetry
+    - name: Build docs
+      run: make build-docs
+    - name: Setup Github Credentials
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+    - name: Deploy docs
+      run: make deploy-docs
