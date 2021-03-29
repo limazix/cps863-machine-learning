@@ -27,6 +27,9 @@ lint:
 test:
 	@$(PYTHON_RUNNER) pytest
 
+test-watch:
+	@$(PYTHON_RUNNER) pytest -f
+
 coverage:
 	@$(PYTHON_RUNNER) pytest --cov=$(PYTHON_TOOLS)
 
