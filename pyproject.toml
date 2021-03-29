@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "ai-project-template"
+name = "cps863-machine-learning"
 version = "0.1.0"
 description = ""
-authors = ["Bruno Lima <blimacardoso@gmail.com>"]
+authors = ["Bruno Lima <blcardoso@cos.ufrj.br>"]
 license = "Apache-2.0"
 readme = "README.md"
 

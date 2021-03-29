@@ -14,5 +14,5 @@ renderer:
       contents:
         - '*'
   mkdocs_config:
-    site_name: AI Project Template
+    site_name: CPS863 Machine Learning
     theme: readthedocs
