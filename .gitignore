@@ -133,3 +133,5 @@ dmypy.json
 
 # jupyter
 .virtual_documents
+
+*.ignore*

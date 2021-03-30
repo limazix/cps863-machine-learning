@@ -22,7 +22,7 @@ clean:
 
 lint:
 	@$(PYTHON_RUNNER) black $(PYTHON_SCRIPTS) --check
-	@$(PYTHON_RUNNER) flake8 $(PYTHON_SCRIPTS) --statistics
+	@$(PYTHON_RUNNER) flake8 $(PYTHON_SCRIPTS) --max-line-length=88 --statistics
 
 test:
 	@$(PYTHON_RUNNER) pytest
