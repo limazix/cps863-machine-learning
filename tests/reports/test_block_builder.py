@@ -48,6 +48,16 @@ class TestReportsBuilder(TestCase):
         self.builder.add_title(title="")
         mock_check_empty_field.assert_called_with("", "Title cannot be empty or null")
 
+    def test_add_title_tag(self):
+        """
+        it should add a markdown 'tag' instead of the default '#'
+        """
+        title = "some title"
+        tag = "##"
+        expected_item = "{} {}".format(tag, title)
+        self.builder.add_title(title=title, tag=tag)
+        self.assertEqual(expected_item, self.builder.contents["title"])
+
     def test_add_description(self):
         """
         it should add the given string to the contents dictionary parameter description

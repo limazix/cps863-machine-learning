@@ -27,7 +27,7 @@ class BlockBuilder:
         if field is None or len(field) <= 0:
             raise AttributeError(error_message)
 
-    def add_title(self, title):
+    def add_title(self, title, tag="#"):
         """
         Method used to define the block's title by add the given string to the
         dictionary.
@@ -39,7 +39,7 @@ class BlockBuilder:
 
         """
         self.check_empty_field(title, "Title cannot be empty or null")
-        self.contents["title"] = "# {}".format(title)
+        self.contents["title"] = "{tag} {text}".format(tag=tag, text=title)
         return self
 
     def add_description(self, text):
