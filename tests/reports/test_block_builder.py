@@ -26,6 +26,15 @@ class TestReportsBuilder(TestCase):
         self.assertIsNotNone(self.builder.contents["title"])
         self.assertEqual(expected_item, self.builder.contents["title"])
 
+    def test_add_empty_title(self):
+        """
+        it should raise an exception if no title is provided
+        """
+        with self.assertRaises(AttributeError):
+            self.builder.add_title(title=None)
+            self.builder.add_title(title="")
+            self.builder.add_title()
+
     def test_add_description(self):
         """
         it should add the given string to the contents dictionary parameter description

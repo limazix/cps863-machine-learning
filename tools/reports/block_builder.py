@@ -20,6 +20,9 @@ class BlockBuilder:
 
         :return: the instance of the class
         """
+        if title is None or len(title) <= 0:
+            raise AttributeError("Title cannot be empty or null")
+
         self.contents["title"] = "# {}".format(title)
         return self
 
