@@ -2,12 +2,12 @@
 
 from unittest import TestCase
 
-from tools.reports.reports_builder import ReportsBuilder
+from tools.reports.block_builder import BlockBuilder
 
 
 class TestReportsBuilder(TestCase):
     def setUp(self):
-        self.builder = ReportsBuilder()
+        self.builder = BlockBuilder()
 
     def test_report_contents(self):
         """
@@ -22,7 +22,7 @@ class TestReportsBuilder(TestCase):
         """
         title = "Some Title"
         expected_item = "# {}".format(title)
-        self.assertIsInstance(self.builder.add_title(title), ReportsBuilder)
+        self.assertIsInstance(self.builder.add_title(title), BlockBuilder)
         self.assertIsNotNone(self.builder.contents["title"])
         self.assertEqual(expected_item, self.builder.contents["title"])
 
@@ -31,6 +31,6 @@ class TestReportsBuilder(TestCase):
         it should add the given string to the contents dictionary parameter description
         """
         description = "some text"
-        self.assertIsInstance(self.builder.add_description(description), ReportsBuilder)
+        self.assertIsInstance(self.builder.add_description(description), BlockBuilder)
         self.assertIsNotNone(self.builder.contents["description"])
         self.assertEqual(description, self.builder.contents["description"])

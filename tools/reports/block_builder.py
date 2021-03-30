@@ -1,7 +1,7 @@
 # -*- utf-8 -*-
 
 
-class ReportsBuilder:
+class BlockBuilder:
     """
     Class designed on the builder pattern to create reports interactively
 
