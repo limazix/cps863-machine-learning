@@ -26,13 +26,11 @@ class TestReportsBuilder(TestCase):
         self.assertIsNotNone(self.builder.contents["title"])
         self.assertEqual(expected_item, self.builder.contents["title"])
 
-    def test_add_report_overview(self):
+    def test_add_description(self):
         """
-        it should add the given string to the contents dictionary parameter overview
+        it should add the given string to the contents dictionary parameter description
         """
-        overview = "some text"
-        self.assertIsInstance(
-            self.builder.add_report_overview(overview), ReportsBuilder
-        )
-        self.assertIsNotNone(self.builder.contents["overview"])
-        self.assertEqual(overview, self.builder.contents["overview"])
+        description = "some text"
+        self.assertIsInstance(self.builder.add_description(description), ReportsBuilder)
+        self.assertIsNotNone(self.builder.contents["description"])
+        self.assertEqual(description, self.builder.contents["description"])

@@ -16,21 +16,21 @@ class ReportsBuilder:
         Method used to define the block's title by add the given string to the
         dictionary.
 
-        :param str title: Blocks Title
+        :param str title: Block's title
 
         :return: the instance of the class
         """
         self.contents["title"] = "# {}".format(title)
         return self
 
-    def add_report_overview(self, text):
+    def add_description(self, text):
         """
-        Method used to define the report's overview by add the given string to the
+        Method used to define the block's description by add the given string to the
         dictionary.
 
-        :param str title: Report Overview
+        :param str title: Block's description
 
         :return: the instance of the class
         """
-        self.contents["overview"] = text
+        self.contents["description"] = text
         return self
