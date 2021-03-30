@@ -66,9 +66,8 @@ class BlockBuilder:
 
         :return: the instance of the class
 
-        .. obs: The paragraph can be a text or a BlockBuilder instance.
         """
-
+        self.check_empty_field(paragraph, "Paragraph cannot be empty or null")
         if "body" not in self.contents.keys():
             self.contents["body"] = list()
 

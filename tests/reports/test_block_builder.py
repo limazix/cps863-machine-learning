@@ -82,6 +82,21 @@ class TestReportsBuilder(TestCase):
             "", "Description cannot be empty or null"
         )
 
+    @patch.object(BlockBuilder, "check_empty_field")
+    def test_add_empty_paragraph(self, mock_check_empty_field):
+        """
+        it should raise an exception if no paragraph value is provided
+        """
+        self.builder.add_paragraph(paragraph=None)
+        mock_check_empty_field.assert_called_with(
+            None, "Paragraph cannot be empty or null"
+        )
+
+        self.builder.add_paragraph(paragraph="")
+        mock_check_empty_field.assert_called_with(
+            "", "Paragraph cannot be empty or null"
+        )
+
     def test_add_paragraph(self):
         """
         it should add the givin string to the contents dictionary parameter body list
