@@ -97,6 +97,19 @@ class TestReportsBuilder(TestCase):
             "", "Paragraph cannot be empty or null"
         )
 
+    def test_add_block_paragraph(self):
+        """
+        it should add the given BlockBuilder instance to the contents dictionary parameter body list
+        """
+        sub_block = BlockBuilder()
+        sub_block.add_title("sub title")
+        sub_block.add_description("sub description")
+        paragraph = sub_block
+
+        self.assertIsInstance(self.builder.add_paragraph(paragraph), BlockBuilder)
+        self.assertIsNotNone(self.builder.contents["body"])
+        self.assertIn(paragraph, self.builder.contents["body"])
+
     def test_add_paragraph(self):
         """
         it should add the givin string to the contents dictionary parameter body list

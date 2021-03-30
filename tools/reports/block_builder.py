@@ -24,7 +24,9 @@ class BlockBuilder:
         :raises: AttributeError
 
         """
-        if field is None or len(field) <= 0:
+        if field is None:
+            raise AttributeError(error_message)
+        elif isinstance(field, str) and len(field) <= 0:
             raise AttributeError(error_message)
 
     def add_title(self, title, tag="#"):
