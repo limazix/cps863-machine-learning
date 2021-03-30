@@ -56,3 +56,15 @@ class BlockBuilder:
         self.check_empty_field(text, "Description cannot be empty or null")
         self.contents["description"] = text
         return self
+
+    def __str__(self):
+        """
+        Method used to transform the block content into a string
+        """
+        output = list()
+        output.append(self.contents["title"])
+
+        if self.contents["description"]:
+            output.append(self.contents["description"])
+
+        return "\n".join(output)

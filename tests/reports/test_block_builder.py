@@ -81,3 +81,16 @@ class TestReportsBuilder(TestCase):
         mock_check_empty_field.assert_called_with(
             "", "Description cannot be empty or null"
         )
+
+    def test_to_string(self):
+        """
+        it should transform the block into a markdown string
+        """
+        title = "Some Title"
+        description = "Block description"
+        expected_result = "# {}\n{}".format(title, description)
+
+        self.builder.add_title(title)
+        self.builder.add_description(description)
+
+        self.assertEqual(expected_result, str(self.builder))
