@@ -16,13 +16,13 @@ class TestReportsBuilder(TestCase):
         self.assertIsNotNone(self.builder.contents)
         self.assertIsInstance(self.builder.contents, dict)
 
-    def test_add_report_title(self):
+    def test_add_title(self):
         """
         it should add the given string to the contents dictionary parameter title
         """
         title = "Some Title"
         expected_item = "# {}".format(title)
-        self.assertIsInstance(self.builder.add_report_title(title), ReportsBuilder)
+        self.assertIsInstance(self.builder.add_title(title), ReportsBuilder)
         self.assertIsNotNone(self.builder.contents["title"])
         self.assertEqual(expected_item, self.builder.contents["title"])
 

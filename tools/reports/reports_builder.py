@@ -11,12 +11,12 @@ class ReportsBuilder:
     def __init__(self):
         self.contents = dict()
 
-    def add_report_title(self, title):
+    def add_title(self, title):
         """
-        Method used to define the report's title by add the given string to the
+        Method used to define the block's title by add the given string to the
         dictionary.
 
-        :param str title: Report Title
+        :param str title: Blocks Title
 
         :return: the instance of the class
         """
