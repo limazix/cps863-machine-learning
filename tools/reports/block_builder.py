@@ -5,7 +5,8 @@ class BlockBuilder:
     """
     Class designed on the builder pattern to create reports interactively
 
-    :param dict contents: it stores the report contents
+    :param contents: it stores the report contents
+    :type contents: list.
     """
 
     def __init__(self):
@@ -16,9 +17,12 @@ class BlockBuilder:
         Method used to check if a given field is empty or none
 
         :param field: Field to check
+        :type field: obj.
         :param error_message: Message to raises if the given field is empty or none
+        :type error_message: str.
 
         :raises: AttributeError
+
         """
         if field is None or len(field) <= 0:
             raise AttributeError(error_message)
@@ -28,9 +32,11 @@ class BlockBuilder:
         Method used to define the block's title by add the given string to the
         dictionary.
 
-        :param str title: Block's title
+        :param title: Block's title
+        :type title: str.
 
         :return: the instance of the class
+
         """
         self.check_empty_field(title, "Title cannot be empty or null")
         self.contents["title"] = "# {}".format(title)
@@ -41,9 +47,11 @@ class BlockBuilder:
         Method used to define the block's description by add the given string to the
         dictionary.
 
-        :param str text: Block's description
+        :param text: Block's description
+        :type text: str.
 
         :return: the instance of the class
+
         """
         self.check_empty_field(text, "Description cannot be empty or null")
         self.contents["description"] = text
