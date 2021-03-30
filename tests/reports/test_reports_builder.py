@@ -11,7 +11,18 @@ class TestReportsBuilder(TestCase):
 
     def test_report_contents(self):
         """
-        it should have a string property contents to store the report contents
+        it should have a dictionary property contents to store the report contents
         """
         self.assertIsNotNone(self.builder.contents)
-        self.assertIsInstance(self.builder.contents, str)
+        self.assertIsInstance(self.builder.contents, dict)
+
+    def test_add_report_title(self):
+        """
+        it should add the given string to a markdown title inside the variable contents
+        at first position
+        """
+        title = "Some Title"
+        expected_item = "# {}".format(title)
+        self.assertIsInstance(self.builder.add_report_title(title), ReportsBuilder)
+        self.assertIsNotNone(self.builder.contents["title"])
+        self.assertEqual(expected_item, self.builder.contents["title"])

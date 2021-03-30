@@ -1,19 +1,26 @@
 # -*- utf-8 -*-
 
-"""
-.. module:: reports_builder
-    :synopsis: Module created to handle report building tasks
-    :platform: OpenSuse 15.2 on WSL2 (Windows 10)
-.. moduleauthor:: Bruno Lima <blcardoso@cos.ufrj.br>
-"""
-
 
 class ReportsBuilder:
     """
     Class designed on the builder pattern to create reports interactively
 
     :param contents: it stores the report contents
+    :type contents: dict
     """
 
     def __init__(self):
-        self.contents = ""
+        self.contents = dict()
+
+    def add_report_title(self, title):
+        """
+        Method used to define the report's title by add the given string to the
+        dictionary.
+
+        :param title: Report Title
+        :type title: str
+
+        :return: the instance of the class
+        """
+        self.contents["title"] = "# {}".format(title)
+        return self
