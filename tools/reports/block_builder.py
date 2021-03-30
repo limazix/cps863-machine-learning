@@ -78,6 +78,20 @@ class BlockBuilder:
         )
         return self
 
+    def add_image(self, image_path):
+        """
+        Method used to inject an image into the block as a paragraph
+
+        :param image_path: Image path
+        :type image_path: str
+
+        :return: the instance of the class
+
+        """
+        md_image = "[image]({})".format(image_path)
+        self.add_paragraph(md_image)
+        return self
+
     def __str__(self):
         """
         Method used to transform the block content into a string

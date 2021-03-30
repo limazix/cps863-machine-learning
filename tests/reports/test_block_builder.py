@@ -99,7 +99,8 @@ class TestReportsBuilder(TestCase):
 
     def test_add_block_paragraph(self):
         """
-        it should add the given BlockBuilder instance to the contents dictionary parameter body list
+        it should add the given BlockBuilder instance to the contents dictionary
+        parameter body list
         """
         sub_block = BlockBuilder()
         sub_block.add_title("sub title")
@@ -132,6 +133,17 @@ class TestReportsBuilder(TestCase):
         self.builder.add_description(description)
 
         self.assertEqual(expected_result, str(self.builder))
+
+    @patch.object(BlockBuilder, "add_paragraph")
+    def test_add_image(self, mock_add_paragraph):
+        """
+        it should add a image path to the document
+        """
+        image_path = "../../image.png"
+        expected_item = "[image]({})".format(image_path)
+
+        self.assertIsInstance(self.builder.add_image(image_path), BlockBuilder)
+        mock_add_paragraph.assert_called_with(expected_item)
 
     def test_to_string_with_sub_block(self):
         """
