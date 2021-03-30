@@ -1,6 +1,7 @@
 # -*- utf-8 -*-
 
 from unittest import TestCase
+from unittest.mock import patch
 
 from tools.reports.block_builder import BlockBuilder
 
@@ -54,11 +55,17 @@ class TestReportsBuilder(TestCase):
         self.assertIsNotNone(self.builder.contents["description"])
         self.assertEqual(description, self.builder.contents["description"])
 
-    def test_add_empty_description(self):
+    @patch.object(BlockBuilder, "check_empty_field")
+    def test_add_empty_description(self, mock_check_empty_field):
         """
         it should raise an exception if no description is provided
         """
-        with self.assertRaises(AttributeError):
-            self.builder.add_description(text=None)
-            self.builder.add_description(text="")
-            self.builder.add_description()
+        self.builder.add_description(text=None)
+        mock_check_empty_field.assert_called_with(
+            None, "Description cannot be empty or null"
+        )
+
+        self.builder.add_description(text="")
+        mock_check_empty_field.assert_called_with(
+            "", "Description cannot be empty or null"
+        )
