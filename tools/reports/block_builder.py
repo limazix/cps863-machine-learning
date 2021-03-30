@@ -73,7 +73,9 @@ class BlockBuilder:
         if "body" not in self.contents.keys():
             self.contents["body"] = list()
 
-        self.contents["body"].append(paragraph)
+        self.contents["body"].append(
+            paragraph if isinstance(paragraph, str) else str(paragraph)
+        )
         return self
 
     def __str__(self):
@@ -86,4 +88,7 @@ class BlockBuilder:
         if self.contents["description"]:
             output.append(self.contents["description"])
 
-        return "\n".join(output)
+        if "body" in self.contents.keys():
+            output.extend(self.contents["body"])
+
+        return "\n\n".join(output)

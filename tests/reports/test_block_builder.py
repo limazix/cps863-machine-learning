@@ -108,7 +108,7 @@ class TestReportsBuilder(TestCase):
 
         self.assertIsInstance(self.builder.add_paragraph(paragraph), BlockBuilder)
         self.assertIsNotNone(self.builder.contents["body"])
-        self.assertIn(paragraph, self.builder.contents["body"])
+        self.assertIn(str(paragraph), self.builder.contents["body"])
 
     def test_add_paragraph(self):
         """
@@ -125,9 +125,35 @@ class TestReportsBuilder(TestCase):
         """
         title = "Some Title"
         description = "Block description"
-        expected_result = "# {}\n{}".format(title, description)
+
+        expected_result = "# {}\n\n{}".format(title, description)
 
         self.builder.add_title(title)
         self.builder.add_description(description)
+
+        self.assertEqual(expected_result, str(self.builder))
+
+    def test_to_string_with_sub_block(self):
+        """
+        it should transform the block with sub blocks into a markdown string
+        """
+        title = "Some Title"
+        description = "Block description"
+
+        sub_block = BlockBuilder()
+        sub_block.add_title("sub title")
+        sub_block.add_description("sub description")
+
+        sub_block2 = BlockBuilder()
+        sub_block2.add_title("sub title 2")
+        sub_block2.add_description("sub description 2")
+
+        expected_result = "# {}\n\n{}\n\n{}\n\n{}".format(
+            title, description, str(sub_block), str(sub_block2)
+        )
+
+        self.builder.add_title(title).add_description(description).add_paragraph(
+            sub_block
+        ).add_paragraph(sub_block2)
 
         self.assertEqual(expected_result, str(self.builder))
