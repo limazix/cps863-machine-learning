@@ -37,14 +37,16 @@ class TestReportsBuilder(TestCase):
         self.assertIsNotNone(self.builder.contents["title"])
         self.assertEqual(expected_item, self.builder.contents["title"])
 
-    def test_add_empty_title(self):
+    @patch.object(BlockBuilder, "check_empty_field")
+    def test_add_empty_title(self, mock_check_empty_field):
         """
         it should raise an exception if no title is provided
         """
-        with self.assertRaises(AttributeError):
-            self.builder.add_title(title=None)
-            self.builder.add_title(title="")
-            self.builder.add_title()
+        self.builder.add_title(title=None)
+        mock_check_empty_field.assert_called_with(None, "Title cannot be empty or null")
+
+        self.builder.add_title(title="")
+        mock_check_empty_field.assert_called_with("", "Title cannot be empty or null")
 
     def test_add_description(self):
         """
