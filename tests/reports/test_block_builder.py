@@ -10,7 +10,7 @@ class TestReportsBuilder(TestCase):
     def setUp(self):
         self.builder = BlockBuilder()
 
-    def test_report_contents(self):
+    def test_contents(self):
         """
         it should have a dictionary property contents to store the report contents
         """
@@ -81,6 +81,15 @@ class TestReportsBuilder(TestCase):
         mock_check_empty_field.assert_called_with(
             "", "Description cannot be empty or null"
         )
+
+    def test_add_paragraph(self):
+        """
+        it should add the givin string to the contents dictionary parameter body list
+        """
+        paragraph = "some paragraph"
+        self.assertIsInstance(self.builder.add_paragraph(paragraph), BlockBuilder)
+        self.assertIsNotNone(self.builder.contents["body"])
+        self.assertIn(paragraph, self.builder.contents["body"])
 
     def test_to_string(self):
         """

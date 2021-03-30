@@ -57,6 +57,24 @@ class BlockBuilder:
         self.contents["description"] = text
         return self
 
+    def add_paragraph(self, paragraph):
+        """
+        Method used to insert a paragraph into the block
+
+        :param paragraph: Paragraph to be inserted
+        :type paragraph: str
+
+        :return: the instance of the class
+
+        .. obs: The paragraph can be a text or a BlockBuilder instance.
+        """
+
+        if "body" not in self.contents.keys():
+            self.contents["body"] = list()
+
+        self.contents["body"].append(paragraph)
+        return self
+
     def __str__(self):
         """
         Method used to transform the block content into a string
