@@ -5,8 +5,7 @@ class ReportsBuilder:
     """
     Class designed on the builder pattern to create reports interactively
 
-    :param contents: it stores the report contents
-    :type contents: dict
+    :param dict contents: it stores the report contents
     """
 
     def __init__(self):
@@ -17,8 +16,7 @@ class ReportsBuilder:
         Method used to define the report's title by add the given string to the
         dictionary.
 
-        :param title: Report Title
-        :type title: str
+        :param str title: Report Title
 
         :return: the instance of the class
         """
@@ -30,8 +28,7 @@ class ReportsBuilder:
         Method used to define the report's overview by add the given string to the
         dictionary.
 
-        :param title: Report Overview
-        :type title: str
+        :param str title: Report Overview
 
         :return: the instance of the class
         """
