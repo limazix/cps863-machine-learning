@@ -8,6 +8,19 @@ class ChartTools:
     Class designed to handle chart operations
     """
 
+    def check_figure(self, figure):
+        """
+        Method used to check the given figure
+
+        :param figure: Plotly figure
+        :type figure: plotly.graph_object.Figure
+
+        :raises: AttributeError
+
+        """
+        if figure is None:
+            raise AttributeError("The figure cannot be empty")
+
     def to_base64(self, figure):
         """
         Method used to transform a Plotly figure into a base64 encoded image string

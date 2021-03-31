@@ -19,6 +19,15 @@ class TestChartTools(TestCase):
         x, y, sz, cl = np.random.rand(4, 100)
         return px.scatter(x=x, y=y, size=sz, color=cl)
 
+    def test_check_none_figure(self):
+        """
+        it should not accept none figures
+        """
+        error_message = "The figure cannot be empty"
+        with self.assertRaises(AttributeError) as error:
+            self.tool.check_figure(figure=None)
+        self.assertEqual(error_message, str(error.exception))
+
     def test_to_base64(self):
         """
         it should convert a given plotly figure to base64 encode
