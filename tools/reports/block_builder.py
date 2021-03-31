@@ -1,5 +1,7 @@
 # -*- utf-8 -*-
 
+import os
+
 
 class BlockBuilder:
     """
@@ -90,6 +92,23 @@ class BlockBuilder:
         """
         md_image = "[image]({})".format(image_path)
         self.add_paragraph(md_image)
+        return self
+
+    def export(self, file_name, output_path):
+        """
+        Method used to export the report to a file
+
+        :param file_name: Output file name
+        :type file_name: str
+        :param output_path: Output folder to store the final file
+        :type output_path: str
+
+        :return: the instance of the class
+
+        """
+        abs_path = os.path.abspath(os.path.join(output_path, file_name))
+        with open(abs_path, "+w") as file:
+            file.write(str(self))
         return self
 
     def __str__(self):

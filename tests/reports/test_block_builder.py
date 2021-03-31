@@ -1,5 +1,7 @@
 # -*- utf-8 -*-
 
+import os
+
 from unittest import TestCase
 from unittest.mock import patch
 
@@ -169,3 +171,29 @@ class TestReportsBuilder(TestCase):
         ).add_paragraph(sub_block2)
 
         self.assertEqual(expected_result, str(self.builder))
+
+    def test_export(self):
+        """
+        it should create a markdown file to a given output path
+        """
+        output_path = "../"
+        file_name = "report-test.md"
+
+        title = "Some Title"
+        description = "Block description"
+
+        sub_block = BlockBuilder()
+        sub_block.add_title("sub title")
+        sub_block.add_description("sub description")
+
+        sub_block2 = BlockBuilder()
+        sub_block2.add_title("sub title 2")
+        sub_block2.add_description("sub description 2")
+
+        self.builder.add_title(title).add_description(description).add_paragraph(
+            sub_block
+        ).add_paragraph(sub_block2).export(file_name=file_name, output_path=output_path)
+
+        path = os.path.abspath(os.path.join(output_path, file_name))
+        self.assertTrue(os.path.exists(path))
+        self.assertTrue(os.path.isfile(path))
