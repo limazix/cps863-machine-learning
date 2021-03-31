@@ -28,6 +28,15 @@ class TestChartTools(TestCase):
             self.tool.check_figure(figure=None)
         self.assertEqual(error_message, str(error.exception))
 
+    def test_check_figure_type(self):
+        """
+        it should only accept Plotly figures
+        """
+        error_message = "The figure can only be a Plotly one"
+        with self.assertRaises(AttributeError) as error:
+            self.tool.check_figure(figure="test")
+        self.assertEqual(error_message, str(error.exception))
+
     def test_to_base64(self):
         """
         it should convert a given plotly figure to base64 encode

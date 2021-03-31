@@ -1,6 +1,7 @@
 # -*- utf-8 -*-
 
 from base64 import b64encode
+import plotly.graph_objects as go
 
 
 class ChartTools:
@@ -20,6 +21,8 @@ class ChartTools:
         """
         if figure is None:
             raise AttributeError("The figure cannot be empty")
+        if not isinstance(figure, go.Figure):
+            raise AttributeError("The figure can only be a Plotly one")
 
     def to_base64(self, figure):
         """
