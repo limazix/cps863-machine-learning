@@ -8,7 +8,7 @@ from unittest.mock import patch
 from tools.reports.block_builder import BlockBuilder
 
 
-class TestReportsBuilder(TestCase):
+class TestBlockBuilder(TestCase):
     def setUp(self):
         self.builder = BlockBuilder()
 
@@ -27,7 +27,7 @@ class TestReportsBuilder(TestCase):
         error_message = "some error message"
         with self.assertRaises(AttributeError) as error:
             self.builder.check_empty_field(None, error_message)
-            self.assertEqual(error_message, error)
+        self.assertEqual(error_message, str(error.exception))
 
     def test_add_title(self):
         """
