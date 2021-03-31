@@ -5,6 +5,7 @@ import plotly.express as px
 import numpy as np
 
 from unittest import TestCase
+from unittest.mock import patch
 
 from tools.chart_tools import ChartTools
 
@@ -36,6 +37,14 @@ class TestChartTools(TestCase):
         with self.assertRaises(AttributeError) as error:
             self.tool.check_figure(figure="test")
         self.assertEqual(error_message, str(error.exception))
+
+    @patch.object(ChartTools, "check_figure")
+    def test_to_base_figure_check(self, mock_figure_check):
+        """
+        it should call the check_figure method to validate the given figure
+        """
+        self.tool.to_base64(self.figure)
+        mock_figure_check.assert_called_with(self.figure)
 
     def test_to_base64(self):
         """

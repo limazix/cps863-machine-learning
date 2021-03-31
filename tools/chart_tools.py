@@ -34,6 +34,7 @@ class ChartTools:
         :return: str -- Encoded figure as a base64 string
 
         """
+        self.check_figure(figure)
         img_bytes = figure.to_image(format="png")
         encoding = b64encode(img_bytes).decode()
         return "data:image/png;base64," + encoding
