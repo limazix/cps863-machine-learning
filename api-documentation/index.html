@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>API Documentation - CPS863 Machine Learning</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "API Documentation";
+    var mkdocs_page_input_path = "api-documentation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CPS863 Machine Learning</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">API Documentation</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CPS863 Machine Learning</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>API Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><a name="tools"></a></p>
+<h1 id="tools">tools</h1>
+<p><a name="tools.chart_tools"></a></p>
+<h1 id="toolschart_tools">tools.chart_tools</h1>
+<p><a name="tools.chart_tools.ChartTools"></a></p>
+<h2 id="charttools-objects">ChartTools Objects</h2>
+<pre><code class="language-python">class ChartTools()
+</code></pre>
+<p>Class designed to handle chart operations</p>
+<p><a name="tools.chart_tools.ChartTools.check_figure"></a></p>
+<h4 id="check_figure">check_figure</h4>
+<pre><code class="language-python"> | check_figure(figure)
+</code></pre>
+<p>Method used to check the given figure</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>figure</code>: Plotly figure
+:type figure: plotly.graph_object.Figure</li>
+</ul>
+<p>:raises: AttributeError</p>
+<p><a name="tools.chart_tools.ChartTools.to_base64"></a></p>
+<h4 id="to_base64">to_base64</h4>
+<pre><code class="language-python"> | to_base64(figure)
+</code></pre>
+<p>Method used to transform a Plotly figure into a base64 encoded image string</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>figure</code>: Plotly figure
+:type figure: plotly.graph_object.Figure</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>str -- Encoded figure as a base64 string</p>
+<p><a name="tools.reports"></a></p>
+<h1 id="toolsreports">tools.reports</h1>
+<h1 id="mod-reports-report-wrapper">:mod: <code>reports</code> -- Report Wrapper</h1>
+<p>.. module:: reports
+    :synopsis: Report building tools
+    :platform: OpenSuse 15.2 on WSL2 (Windows 10)
+.. moduleauthor:: Bruno Lima <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#108;&#99;&#97;&#114;&#100;&#111;&#115;&#111;&#64;&#99;&#111;&#115;&#46;&#117;&#102;&#114;&#106;&#46;&#98;&#114;">&#98;&#108;&#99;&#97;&#114;&#100;&#111;&#115;&#111;&#64;&#99;&#111;&#115;&#46;&#117;&#102;&#114;&#106;&#46;&#98;&#114;</a></p>
+<p><a name="tools.reports.block_builder"></a></p>
+<h1 id="toolsreportsblock_builder">tools.reports.block_builder</h1>
+<p><a name="tools.reports.block_builder.BlockBuilder"></a></p>
+<h2 id="blockbuilder-objects">BlockBuilder Objects</h2>
+<pre><code class="language-python">class BlockBuilder()
+</code></pre>
+<p>Class designed on the builder pattern to create reports interactively</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>contents</code>: it stores the report contents
+:type contents: list.</li>
+</ul>
+<p><a name="tools.reports.block_builder.BlockBuilder.check_empty_field"></a></p>
+<h4 id="check_empty_field">check_empty_field</h4>
+<pre><code class="language-python"> | check_empty_field(field, error_message)
+</code></pre>
+<p>Method used to check if a given field is empty or none</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>field</code>: Field to check
+:type field: obj.</li>
+<li><code>error_message</code>: Message to raises if the given field is empty or none
+:type error_message: str.</li>
+</ul>
+<p>:raises: AttributeError</p>
+<p><a name="tools.reports.block_builder.BlockBuilder.add_title"></a></p>
+<h4 id="add_title">add_title</h4>
+<pre><code class="language-python"> | add_title(title, tag=&quot;#&quot;)
+</code></pre>
+<p>Method used to define the block's title by add the given string to the
+dictionary.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>title</code>: Block's title
+:type title: str.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>the instance of the class</p>
+<p><a name="tools.reports.block_builder.BlockBuilder.add_description"></a></p>
+<h4 id="add_description">add_description</h4>
+<pre><code class="language-python"> | add_description(text)
+</code></pre>
+<p>Method used to define the block's description by add the given string to the
+dictionary.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>text</code>: Block's description
+:type text: str.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>the instance of the class</p>
+<p><a name="tools.reports.block_builder.BlockBuilder.add_paragraph"></a></p>
+<h4 id="add_paragraph">add_paragraph</h4>
+<pre><code class="language-python"> | add_paragraph(paragraph)
+</code></pre>
+<p>Method used to insert a paragraph into the block</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>paragraph</code>: Paragraph to be inserted
+:type paragraph: str</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>the instance of the class</p>
+<p><a name="tools.reports.block_builder.BlockBuilder.add_image"></a></p>
+<h4 id="add_image">add_image</h4>
+<pre><code class="language-python"> | add_image(image_path)
+</code></pre>
+<p>Method used to inject an image into the block as a paragraph</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>image_path</code>: Image path
+:type image_path: str</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>the instance of the class</p>
+<p><a name="tools.reports.block_builder.BlockBuilder.export"></a></p>
+<h4 id="export">export</h4>
+<pre><code class="language-python"> | export(file_name, output_path)
+</code></pre>
+<p>Method used to export the report to a file</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>file_name</code>: Output file name
+:type file_name: str</li>
+<li><code>output_path</code>: Output folder to store the final file
+:type output_path: str</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>the instance of the class</p>
+<p><a name="tools.reports.block_builder.BlockBuilder.__str__"></a></p>
+<h4 id="__str__">__str__</h4>
+<pre><code class="language-python"> | __str__()
+</code></pre>
+<p>Method used to transform the block content into a string</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
